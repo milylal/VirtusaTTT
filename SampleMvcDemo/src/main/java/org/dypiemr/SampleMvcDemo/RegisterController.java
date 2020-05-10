@@ -32,8 +32,6 @@ public class RegisterController {
 	public String processRegistration(@ModelAttribute("userForm") User user, 
 			Map<String, Object> model) {
 		
-		// implement your own registration logic here...
-		
 		// for testing purpose:
 		System.out.println("username: " + user.getUsername());
 		System.out.println("password: " + user.getPassword());
