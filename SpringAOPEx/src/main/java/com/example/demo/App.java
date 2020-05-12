@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  */
 public class App 
-{
+{   
     public static void main( String[] args )
     {
     	ApplicationContext appContext = new ClassPathXmlApplicationContext("Spring-Customer.xml");
@@ -17,21 +17,23 @@ public class App
     	//customer.addCustomer();
     	    	
 		//customer.addCustomerReturnValue();
+	
 		
-		//try {
-			//customer.addCustomerThrowException();
-		//} catch (Exception e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		//}
-		
-		customer.addCustomerAround(1,"Mily");
-		System.out.println("///////////////////////////////////");
-		
-		customer.addCustomerAround(2,"Mily123");
-		
-		System.out.println("///////////getCustomer////////////");
-		
-		customer.getCustomer(1);
+		//customer.addCustomerAround(1,"Mily");
+		//System.out.println("///////////////////////////////////");
+		Customer cust=new Customer(1,"Mily");
+		customer.addCustomer(cust);
+	    System.out.println(customer.addCustomerReturnValue());
+	    try {
+		customer.addCustomerThrowException();
+	     } catch (Exception e) {
+		  e.printStackTrace();
+	}   
+	    cust=new Customer(2,"Mily123");
+	    customer.addCustomer(cust);
+		//customer.getCustomer(1);
+         System.out.println(customer.findByCustomerId(cust.getCustId()));
+         System.out.println(customer.findByCustomerIdReturnValue());
+      
     }
 }

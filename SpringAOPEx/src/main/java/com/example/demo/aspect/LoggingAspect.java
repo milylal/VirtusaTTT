@@ -21,7 +21,7 @@ public class LoggingAspect {
 		System.out.println("hijacked : " + joinPoint.getSignature().getName());
 		System.out.println("******");
 	}
-	@Before("execution(* com.example.demo.CustomerBo.getCustomer(..))")
+	@Before("execution(* com.example.demo.CustomerBo.findByCustomerId(..))")
 	public void logBefore1(JoinPoint joinPoint) {
 
 		System.out.println("logBefore() is running!");
@@ -45,7 +45,7 @@ public class LoggingAspect {
 		System.out.println("******");
 
 	}
-	@After("execution(* com.example.demo.CustomerBo.getCustomer(..))")
+	@After("execution(* com.example.demo.CustomerBo.findByCustomerId(..))")
 	public void logAfter1(JoinPoint joinPoint) {
 
 		System.out.println("logAfter() is running!");
@@ -65,7 +65,7 @@ public class LoggingAspect {
 
 	}
 	@AfterReturning(
-			pointcut = "execution(* com.example.demo.CustomerBo.getCustomerReturnValue(..))",
+			pointcut = "execution(* com.example.demo.CustomerBo.findByCustomerIdReturnValue(..))",
 			returning= "result")
 	public void logAfterReturning1(JoinPoint joinPoint, Object result) {
 
@@ -88,7 +88,7 @@ public class LoggingAspect {
 
 	}
 	@AfterThrowing(
-			pointcut = "execution(* com.example.demo.CustomerBo.getCustomerThrowException(..))",
+			pointcut = "execution(* com.example.demo.CustomerBo.findByCustomerIdThrowException(..))",
 			throwing= "error")
 	public void logAfterThrowing1(JoinPoint joinPoint, Throwable error) {
 
