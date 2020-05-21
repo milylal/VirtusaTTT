@@ -47,11 +47,11 @@ public class CustomerDaoHibernateImpl implements CustomerDAO {
 			// get the current hibernate session
 			Session currentSession = entityManager.unwrap(Session.class);
 			
-			// get the employee
+			// get the customer
 			Customer theCustomer =
 					currentSession.get(Customer.class, theId);
 			
-			// return the employee
+			// return the customer
 			return theCustomer;
 		}
 
@@ -62,7 +62,7 @@ public class CustomerDaoHibernateImpl implements CustomerDAO {
 			// get the current hibernate session
 			Session currentSession = entityManager.unwrap(Session.class);
 			
-			// save employee
+			// save customer
 			currentSession.saveOrUpdate(theCustomer);
 		}
 
@@ -81,7 +81,8 @@ public class CustomerDaoHibernateImpl implements CustomerDAO {
 			
 			theQuery.executeUpdate();
 		}
-
+     
+		
 	
 
 }
