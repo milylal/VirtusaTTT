@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dypiemr.carpool.demo.entity.Customer_Rides_PK;
 import com.dypiemr.carpool.demo.entity.Ride;
-import com.dypiemr.carpool.demo.entity.Ride_Details;
+import com.dypiemr.carpool.demo.entity.RideDetails;
 
 @Repository
 public class RideDAOHibernateImpl implements RideDAO {
@@ -34,7 +34,6 @@ public class RideDAOHibernateImpl implements RideDAO {
 			// create a query
 			Query<Ride> theQuery =
 					currentSession.createQuery("from Ride", Ride.class);
-			
 			// execute query and get result list
 			List<Ride> ride = theQuery.getResultList();
 			
@@ -89,9 +88,9 @@ public class RideDAOHibernateImpl implements RideDAO {
 				// get the current hibernate session
 				Session currentSession = entityManager.unwrap(Session.class);
 				Query theQuery = 
-						currentSession.createQuery("from Ride_Details where rideId=:rideId", Ride_Details.class);
-				int rideno=theQuery.getFirstResult();
-				Ride_Details userRide = new Ride_Details();
+						currentSession.createQuery("from RideDetails where rideId=:rideId", RideDetails.class);
+				int rideno=theQuery.getMaxResults();
+				RideDetails userRide = new RideDetails();
 				Customer_Rides_PK userRidePk = new Customer_Rides_PK();
 				userRidePk.setRideId(rideId);
 				userRidePk.setUserId(customerId);

@@ -44,6 +44,7 @@ public class RideServiceImpl implements RideService {
 	}
 
 	@Override
+	@Transactional
 	public void saveRider(int rideId, int customerId) {
 		// TODO Auto-generated method stub
 		rideDAO.saveRider(rideId, customerId);
@@ -51,6 +52,7 @@ public class RideServiceImpl implements RideService {
 	}
 
 	@Override
+	@Transactional
 	public int countRides() {
 		// TODO Auto-generated method stub
 		return rideDAO.countRides();

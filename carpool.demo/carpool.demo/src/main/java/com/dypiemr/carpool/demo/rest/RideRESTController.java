@@ -96,9 +96,13 @@ public class RideRESTController {
 					throw new RuntimeException("Ride id not found - " + rideId);
 				}
 				int rideNo = rideService.countRides();
-				rideService.saveRider(rideId,customerId);
 				System.out.println("Ride saved"+rideNo);
 				return theRide;
+			}
+			
+			@GetMapping("/saveRider")
+			public void saveRider(@RequestParam("rideId") int rideId,@RequestParam("customerId") int customerId)  {
+				rideService.saveRider(rideId, customerId);
 			}
 	
 }
