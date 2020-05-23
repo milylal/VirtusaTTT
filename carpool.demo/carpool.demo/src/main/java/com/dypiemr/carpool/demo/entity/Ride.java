@@ -25,18 +25,20 @@ public class Ride {
 	private String rideEndLocation;
 	@Column(name="vacancy")
 	private int vacancy;
-	
+	@Column(name="base_fare")
+	private int baseFare;
 	// define constructors
 	
 public Ride() {
 		
 	}
 
-	public Ride(String rideDate, String rideTime, String rideStartLocation,String rideEndLocation,int vacancy) {
+	public Ride(String rideDate, String rideTime, String rideStartLocation,String rideEndLocation,int vacancy,int baseFare) {
 		this.rideDate = rideDate;
 		this.rideTime = rideTime;
 		this.rideStartLocation=rideStartLocation;
 		this.rideEndLocation=rideEndLocation;
+		this.baseFare=baseFare;
 		this.vacancy = vacancy;
 	}
 	
@@ -51,6 +53,12 @@ public Ride() {
 		}
 	public String getRideDate() {
 		return rideDate;
+	}
+	public int getBaseFare() {
+		return baseFare;
+	}
+	public void setBaseFare(int BaseFare) {
+		this.baseFare = baseFare;
 	}
 	public void setRideDate(String rideDate) {
 		this.rideDate = rideDate;
@@ -84,8 +92,11 @@ public Ride() {
 	@Override
 	public String toString() {
 		return "Ride [id=" + id + ", rideDate=" + rideDate + ", rideTime=" + rideTime + ", rideStartLocation="
-				+ rideStartLocation + ", rideEndLocation=" + rideEndLocation + ", vacancy=" + vacancy + "]";
+				+ rideStartLocation + ", rideEndLocation=" + rideEndLocation + ", vacancy=" + vacancy + ", baseFare="
+				+ baseFare + "]";
 	}
+
+	
 	
 	
 }

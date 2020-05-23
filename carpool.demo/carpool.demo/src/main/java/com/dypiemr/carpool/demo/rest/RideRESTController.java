@@ -89,8 +89,8 @@ public class RideRESTController {
 
 	
 		
-			@GetMapping("/createride/{customerId}/{rideId}")
-			public Ride createride(@PathVariable int customerId,@PathVariable int rideId) {
+			@GetMapping("/viewride/{customerId}")
+			public Ride createride(@PathVariable int customerId,@RequestParam("rideId") int rideId) {
 				Ride theRide = rideService.findById(rideId);
 				if (theRide == null) {
 					throw new RuntimeException("Ride id not found - " + rideId);

@@ -10,7 +10,6 @@ public interface RideService {
 		public Ride findById(int theId);
 		
 		public void save(Ride theRide);
-		
 		public void deleteById(int theId);
 		void saveRider(int rideId,int userId);
 		int countRides();

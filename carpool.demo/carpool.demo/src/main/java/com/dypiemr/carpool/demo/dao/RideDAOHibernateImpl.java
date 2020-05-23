@@ -83,30 +83,30 @@ public class RideDAOHibernateImpl implements RideDAO {
 
 
 			@Override
-			public void saveRider(int rideId, int customerId) {
+			public void saveRider(int rId, int customerId) {
 				// TODO Auto-generated method stub
 				// get the current hibernate session
 				Session currentSession = entityManager.unwrap(Session.class);
-				Query theQuery = 
-						currentSession.createQuery("from RideDetails where rideId=:rideId", RideDetails.class);
-				int rideno=theQuery.getMaxResults();
+				Query theQuery = currentSession.createQuery("select count(*) from RideDetails where ride_id=:rideId");
+				theQuery.setParameter("rideId", rId);
+				Long rdno = (Long)theQuery.uniqueResult();
 				RideDetails userRide = new RideDetails();
 				Customer_Rides_PK userRidePk = new Customer_Rides_PK();
-				userRidePk.setRideId(rideId);
+				userRidePk.setRideId(rId);
 				userRidePk.setUserId(customerId);
 				userRide.setPkey(userRidePk);
-				userRide.setRiderNo(rideno+1);
+				userRide.setRiderNo(rdno.intValue()+1);
 				currentSession.save(userRide);
 				
 			}
-
 
 			@Override
 			public int countRides() {
 				// TODO Auto-generated method stub
 				Session currentSession = entityManager.unwrap(Session.class);
-				Query theQuery = currentSession.createQuery("from Ride", Ride.class);
-				return theQuery.getResultList().size();
+				Query theQuery = currentSession.createQuery("select count(*)from Ride");
+				Long rdno = (Long)theQuery.uniqueResult();
+				return rdno.intValue();
 			}
 
 			
