@@ -11,6 +11,7 @@ public interface RideDAO {
 	public void save(Ride theRide);
 	public void deleteById(int theId);
 	void saveRider(int rideId,int customerId);
+	void payRide(int rideId,int customerId);
 	int countRides();
 
 }

@@ -1,6 +1,7 @@
 package com.dypiemr.carpool.demo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,8 @@ public class CustomerRESTController {
 	
 	// expose "/customer" and return list of customer
 	@GetMapping("/customer")
+	//defines a cache for method's return value  
+	@Cacheable(value="customer")  
 	public List<Customer> findAll() {
 		return customerService.findAll();
 	}

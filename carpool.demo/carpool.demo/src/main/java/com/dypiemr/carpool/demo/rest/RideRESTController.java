@@ -95,15 +95,30 @@ public class RideRESTController {
 				if (theRide == null) {
 					throw new RuntimeException("Ride id not found - " + rideId);
 				}
-				int rideNo = rideService.countRides();
-				System.out.println("Ride saved"+rideNo);
 				return theRide;
 			}
 			
 			@GetMapping("/saveRider")
 			public void saveRider(@RequestParam("rideId") int rideId,@RequestParam("customerId") int customerId)  {
+				Ride theRide = rideService.findById(rideId);
+				if (theRide == null) {
+					throw new RuntimeException("Ride id not found - " + rideId);
+				}
+				else {
 				rideService.saveRider(rideId, customerId);
+				int rideNo = rideService.countRides();
+				System.out.println("Ride saved"+rideNo);
+				}
 			}
+			
+			@GetMapping("/payRide")
+			public void payRide(@RequestParam("rideId") int rideId,@RequestParam("customerId") int customerId)  {
+				rideService.payRide(rideId, customerId);
+				System.out.println("Paid for the ride");
+			}
+			
+			
+			
 	
 }
 

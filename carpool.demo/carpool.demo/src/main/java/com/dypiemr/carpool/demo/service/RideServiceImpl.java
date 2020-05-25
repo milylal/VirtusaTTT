@@ -58,5 +58,13 @@ public class RideServiceImpl implements RideService {
 		return rideDAO.countRides();
 	}
 
+	@Override
+	@Transactional
+	public void payRide(int rideId, int userId) {
+		// TODO Auto-generated method stub
+		rideDAO.payRide(rideId, userId);
+		
+	}
+
 }
 

@@ -109,5 +109,16 @@ public class RideDAOHibernateImpl implements RideDAO {
 				return rdno.intValue();
 			}
 
+
+			@Override
+			public void payRide(int rId, int customerId) {
+				// TODO Auto-generated method stub
+				Session currentSession = entityManager.unwrap(Session.class);
+				Query theQuery = currentSession.createQuery("select baseFare from Ride where id=:rideId");
+				theQuery.setParameter("rideId", rId);
+				int rdfare = (int)theQuery.uniqueResult();
+				System.out.println("Amount="+rdfare);
+			}
+
 			
 }
