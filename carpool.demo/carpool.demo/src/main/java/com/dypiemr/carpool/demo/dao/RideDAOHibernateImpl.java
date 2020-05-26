@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.dypiemr.carpool.demo.entity.Customer_Rides_PK;
+import com.dypiemr.carpool.demo.entity.PaymentDetails;
 import com.dypiemr.carpool.demo.entity.Ride;
 import com.dypiemr.carpool.demo.entity.RideDetails;
 
@@ -112,11 +113,16 @@ public class RideDAOHibernateImpl implements RideDAO {
 			@Override
 			public void payRide(int rId, int customerId) {
 				// TODO Auto-generated method stub
+				PaymentDetails pay=new PaymentDetails();
 				Session currentSession = entityManager.unwrap(Session.class);
 				Query theQuery = currentSession.createQuery("select baseFare from Ride where id=:rideId");
 				theQuery.setParameter("rideId", rId);
 				int rdfare = (int)theQuery.uniqueResult();
+				pay.setRideId(rId);
+				pay.setUserId(customerId);
+				pay.setAmount(rdfare);
 				System.out.println("Amount="+rdfare);
+				currentSession.save(pay);
 			}
 
 			
