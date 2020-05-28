@@ -16,7 +16,9 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	
+	@Column(name="password")
+	private String password;
+
 	@Column(name="first_name")
 	private String firstName;
 	
@@ -33,10 +35,11 @@ public class Customer {
 		
 	}
 
-	public Customer(String firstName, String lastName, String email) {
+	public Customer(String firstName, String lastName, String email,String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password=password;
 	}
 
 	// define getter/setter
@@ -72,13 +75,19 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	// define tostring
-
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Customer [id=" + id + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + "]";
 	}
+	
 		
 }
 

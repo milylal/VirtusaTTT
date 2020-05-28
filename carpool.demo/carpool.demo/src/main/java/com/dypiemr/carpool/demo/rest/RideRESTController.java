@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dypiemr.carpool.demo.entity.Ride;
+import com.dypiemr.carpool.demo.exception.NotFoundException;
 import com.dypiemr.carpool.demo.service.RideService;
 
 @RestController
@@ -40,7 +41,7 @@ public class RideRESTController {
 			Ride theRide = rideService.findById(rideId);
 			
 			if (theRide == null) {
-				throw new RuntimeException("Ride id not found - " + rideId);
+				throw new NotFoundException("Ride nor found with id " + rideId);
 			}
 			
 			return theRide;
@@ -79,7 +80,7 @@ public class RideRESTController {
 			// throw exception if null
 			
 			if (tempRide == null) {
-				throw new RuntimeException("Ride id not found - " + rideId);
+				throw new NotFoundException("Ride nor found with id " + rideId);
 			}
 			
 			rideService.deleteById(rideId);
@@ -93,7 +94,7 @@ public class RideRESTController {
 			public Ride createride(@PathVariable int customerId,@RequestParam("rideId") int rideId) {
 				Ride theRide = rideService.findById(rideId);
 				if (theRide == null) {
-					throw new RuntimeException("Ride id not found - " + rideId);
+					throw new NotFoundException("Ride nor found with id " + rideId);
 				}
 				return theRide;
 			}
@@ -102,7 +103,7 @@ public class RideRESTController {
 			public void saveRider(@RequestParam("rideId") int rideId,@RequestParam("customerId") int customerId)  {
 				Ride theRide = rideService.findById(rideId);
 				if (theRide == null) {
-					throw new RuntimeException("Ride id not found - " + rideId);
+					throw new NotFoundException("Ride nor found with id " + rideId);
 				}
 				else {
 				rideService.saveRider(rideId, customerId);

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.dypiemr.carpool.demo.entity.Customer;
+import com.dypiemr.carpool.demo.exception.NotFoundException;
 import com.dypiemr.carpool.demo.service.CustomerService;
 
 @RestController
@@ -41,7 +42,7 @@ public class CustomerRESTController {
 			Customer theCustomer = customerService.findById(customerId);
 			
 			if (theCustomer == null) {
-				throw new RuntimeException("Customer id not found - " + customerId);
+				throw new NotFoundException("Customer not found with id " + customerId);
 			}
 			
 			return theCustomer;
@@ -80,7 +81,7 @@ public class CustomerRESTController {
 			// throw exception if null
 			
 			if (tempCustomer == null) {
-				throw new RuntimeException("Customer id not found - " + customerId);
+				throw new NotFoundException("Customer not found with id " + customerId);
 			}
 			
 			customerService.deleteById(customerId);

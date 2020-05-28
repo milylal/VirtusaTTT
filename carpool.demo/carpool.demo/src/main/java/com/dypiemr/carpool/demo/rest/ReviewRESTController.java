@@ -4,15 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dypiemr.carpool.demo.entity.Customer;
 import com.dypiemr.carpool.demo.entity.Review;
-import com.dypiemr.carpool.demo.entity.Ride;
+import com.dypiemr.carpool.demo.exception.NotFoundException;
 import com.dypiemr.carpool.demo.service.ReviewService;
 
 @RestController
@@ -44,7 +41,7 @@ public class ReviewRESTController {
 	public Review getReview(@RequestParam("reviewId") int reviewId) {
 		Review theReview= reviewService.findByReviewId(reviewId);
 		if (theReview == null) {
-			throw new RuntimeException("Review not found - " + theReview);
+			throw new NotFoundException("Review not found with id " + reviewId);
 		}
 		
 		return theReview;

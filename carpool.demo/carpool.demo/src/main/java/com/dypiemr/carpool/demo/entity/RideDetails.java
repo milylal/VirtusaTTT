@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class RideDetails {
  
     @EmbeddedId
-	private Customer_Rides_PK pkey;
+	private CustomerRidesPk pkey;
     @Column(name="riderNo")
 	private int riderNo;
 	@ManyToOne(cascade=CascadeType.ALL)
@@ -27,11 +27,11 @@ public class RideDetails {
 	private Ride ride;
 	
 	
-	public Customer_Rides_PK getPkey() {
+	public CustomerRidesPk getPkey() {
 		return pkey;
 	}
 
-	public void setPkey(Customer_Rides_PK pkey) {
+	public void setPkey(CustomerRidesPk pkey) {
 		this.pkey = pkey;
 	}
    

@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dypiemr.carpool.demo.entity.Customer_Rides_PK;
+import com.dypiemr.carpool.demo.entity.CustomerRidesPk;
 import com.dypiemr.carpool.demo.entity.PaymentDetails;
 import com.dypiemr.carpool.demo.entity.Ride;
 import com.dypiemr.carpool.demo.entity.RideDetails;
@@ -91,7 +91,7 @@ public class RideDAOHibernateImpl implements RideDAO {
 				theQuery.setParameter("rideId", rId);
 				Long rdno = (Long)theQuery.uniqueResult();
 				RideDetails userRide = new RideDetails();
-				Customer_Rides_PK userRidePk = new Customer_Rides_PK();
+				CustomerRidesPk userRidePk = new CustomerRidesPk();
 				userRidePk.setRideId(rId);
 				userRidePk.setUserId(customerId);
 				userRide.setPkey(userRidePk);
