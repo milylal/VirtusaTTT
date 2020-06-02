@@ -1,0 +1,63 @@
+<p>add-customer works!</p>
+<div class="d-flex justify-content-between">
+    <h4>Add new Customer</h4>
+    
+    <button mat-button (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+    
+    </div>
+    
+    <div style="overflow: auto; height: 450px;">
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    
+        <div class="m-3 input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">First Name</span>
+          </div>
+          <input required minlength="2" type="text"
+          class="form-control"
+          name="firstName"
+          #first_name="ngModel"
+          [(ngModel)]="service.formData.firstName">
+        </div>
+        <div class="m-3 input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Last Name</span>
+            </div>
+            <input required minlength="2" type="text"
+            class="form-control"
+            name="lastName"
+            #last_name="ngModel"
+            [(ngModel)]="service.formData.last_name">
+          </div>
+          <div class="m-3 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">MailID</span>
+              </div>
+              <input required minlength="2" type="text"
+              class="form-control"
+              name="email"
+              #email="ngModel"
+              [(ngModel)]="service.formData.email">
+            </div>
+
+            <div class="m-3 input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Password</span>
+                </div>
+                <input required minlength="2" type="text"
+                class="form-control"
+                name="password"
+                #password="ngModel"
+                [(ngModel)]="service.formData.password">
+              </div>
+
+    
+      <button class="mt-4" mat-raised-button
+      color="primary" type="submit"
+      [disabled]="form.invalid">Add Customer</button>
+    
+    
+      </form>
+    </div>

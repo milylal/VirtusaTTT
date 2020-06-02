@@ -1,0 +1,46 @@
+<mat-form-field>
+    <input  matInput (keyup)="applyFilter($event.target.value)"
+    placeholder="Filter">
+  </mat-form-field>
+<div style="overflow:auto;">
+    <div class="mat-elevation-z8">
+        <mat-table [dataSource]="listData" matSort>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row;columns:displayedColumns;"></mat-row>
+            <ng-container matColumnDef="options">
+            <mat-header-cell *matHeaderCellDef>options</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-icon-button (click)="onEdit(row)">
+                    <mat-icon>launch</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="onDelete(row.id)">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="id" >
+                <mat-header-cell *matHeaderCellDef mat-sort-header>CustomerId</mat-header-cell>
+                <mat-header-cell *matCellDef="let element">{{element.id}}</mat-header-cell>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+                <mat-header-cell *matCellDef="let element">{{element.email}}</mat-header-cell>
+            </ng-container>
+            <ng-container matColumnDef="first_name" >
+                <mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</mat-header-cell>
+                <mat-header-cell *matCellDef="let element">{{element.firstName}}</mat-header-cell>
+            </ng-container>
+            <ng-container matColumnDef="last_name" >
+                <mat-header-cell *matHeaderCellDef mat-sort-header>LastName</mat-header-cell>
+                <mat-header-cell *matCellDef="let element">{{element.lastName}}</mat-header-cell>
+            </ng-container>
+            <ng-container matColumnDef="password" >
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Password</mat-header-cell>
+                <mat-header-cell *matCellDef="let element">{{element.password}}</mat-header-cell>
+            </ng-container>
+    
+        </mat-table>
+    </div>
+    </div>
+    <button class="mt-2" mat-raised-button (click)="onAdd()"
+      color="primary" >Add Customer</button>

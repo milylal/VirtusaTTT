@@ -1,0 +1,84 @@
+<p>edit-ride works!</p>
+<div style="overflow: auto; height: 450px;">
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  
+      <div class="m-3 input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Ride ID</span>
+        </div>
+        <input readonly="readonly" type="text"
+        class="form-control"
+        name="id"
+        #EmployeeID="ngModel"
+        [(ngModel)]="service.formData.id">
+      </div>
+      <div class="m-3 input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Ride Date</span>
+        </div>
+        <input required minlength="2" type="text"
+        class="form-control"
+        name="rideDate"
+        #rdate="ngModel"
+        [(ngModel)]="service.formData.rdate">
+      </div>
+      <div class="m-3 input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Ride Time</span>
+        </div>
+        <input required minlength="2" type="text"
+        class="form-control"
+        name="rideTime"
+        #rtime="ngModel"
+        [(ngModel)]="service.formData.rtime">
+      </div>
+      <div class="m-3 input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">StartLocation</span>
+        </div>
+        <input required minlength="2" type="text"
+        class="form-control"
+        name="RideStartLocation"
+        #start_loc="ngModel"
+        [(ngModel)]="service.formData.start_loc">
+      </div>
+      <div class="m-3 input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">EndLocation</span>
+          </div>
+          <input required minlength="2" type="text"
+          class="form-control"
+          name="RideEndLocation"
+          #end_loc="ngModel"
+          [(ngModel)]="service.formData.end_loc">
+        </div>
+        <div class="m-3 input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Vacancy</span>
+            </div>
+            <input required minlength="2" type="text"
+            class="form-control"
+            name="vacancy"
+            #vacancy="ngModel"
+            [(ngModel)]="service.formData.vacancy">
+          </div>
+
+          <div class="m-3 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">BaseFare</span>
+              </div>
+              <input required minlength="2" type="text"
+              class="form-control"
+              name="baseFare"
+              #base_fare="ngModel"
+              [(ngModel)]="service.formData.base_fare">
+            </div>
+
+  
+            <button class="mt-4" mat-raised-button
+            color="primary" type="submit"
+            [disabled]="form.invalid">Update Ride</button>
+  
+  
+    </form>
+  </div>

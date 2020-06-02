@@ -1,0 +1,41 @@
+<p>pay-ride works!</p>
+    
+    <div class="d-flex justify-content-between">
+        <h4>Payment</h4>
+        <button mat-button (click)="onClose()">
+          <mat-icon>close</mat-icon>
+        </button>
+        
+        </div>
+    <div style="overflow: auto; height: 450px;">
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+          <div class="m-3 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Customer ID</span>
+              </div>
+              <input required minlength="2" type="text"
+              class="form-control"
+              name="customerId"
+              #customer_id="ngModel"
+              [(ngModel)]="service.formData.customer_id">
+            </div>
+
+            <div class="m-3 input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Ride ID</span>
+                </div>
+                <input required minlength="2" type="text"
+                class="form-control"
+                name="rideId"
+                #ride_id="ngModel"
+                [(ngModel)]="service.formData.ride_id">
+              </div>
+
+    
+      <button class="mt-4" mat-raised-button
+      color="primary" type="submit"
+      [disabled]="form.invalid">Pay</button>
+    
+    
+      </form>
+    </div>
