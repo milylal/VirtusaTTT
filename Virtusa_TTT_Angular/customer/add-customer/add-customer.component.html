@@ -19,7 +19,11 @@
           class="form-control"
           name="firstName"
           #first_name="ngModel"
-          [(ngModel)]="service.formData.firstName">
+          [(ngModel)]="service.formData.first_name">
+        </div>
+        <div class="text-left text-danger"
+            *ngIf="first_name.invalid && first_name.touched">
+            Please enter First name.
         </div>
         <div class="m-3 input-group">
             <div class="input-group-prepend">
@@ -31,6 +35,10 @@
             #last_name="ngModel"
             [(ngModel)]="service.formData.last_name">
           </div>
+          <div class="text-left text-danger"
+            *ngIf="last_name.invalid && last_name.touched">
+            Please enter Last name.
+        </div>
           <div class="m-3 input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">MailID</span>
@@ -41,7 +49,10 @@
               #email="ngModel"
               [(ngModel)]="service.formData.email">
             </div>
-
+            <div class="text-left text-danger"
+            *ngIf="email.invalid && email.touched">
+            Please enter email.
+            </div>
             <div class="m-3 input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">Password</span>
@@ -52,7 +63,7 @@
                 #password="ngModel"
                 [(ngModel)]="service.formData.password">
               </div>
-
+              
     
       <button class="mt-4" mat-raised-button
       color="primary" type="submit"
