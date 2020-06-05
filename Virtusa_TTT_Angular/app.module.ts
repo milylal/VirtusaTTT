@@ -54,6 +54,6 @@ import { PayRideComponent } from './ride/pay-ride/pay-ride.component';
     CustomerService,
     RideService],
   bootstrap: [AppComponent],
-  entryComponents:[AddRideComponent,AddCustomerComponent,EditCustomerComponent,EditRideComponent,PayRideComponent ]
+  entryComponents:[AddRideComponent,AddCustomerComponent,EditCustomerComponent,EditRideComponent,PayRideComponent,SelectRideComponent ]
 })
 export class AppModule { }
