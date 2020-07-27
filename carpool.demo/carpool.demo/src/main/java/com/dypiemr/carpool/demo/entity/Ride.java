@@ -15,88 +15,135 @@ public class Ride {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
+	@Column(name="driver")
+	private String driver;
+	@Column(name="vehicleNo")
+	private String vehicleNo;
+	@Column(name="phoneNo")
+	private int phoneNo;
 	@Column(name="rdate")
-	private String rideDate;
+	private String rdate;
 	@Column(name="rtime")
-	private String rideTime;
+	private String rtime;
 	@Column(name="start_loc")
-	private String rideStartLocation;
+	private String start_loc;
 	@Column(name="end_loc")
-	private String rideEndLocation;
+	private String end_loc;
 	@Column(name="vacancy")
 	private int vacancy;
 	@Column(name="base_fare")
-	private int baseFare;
+	private int base_fare;
 	// define constructors
 	
 public Ride() {
 		
 	}
+	
+	public Ride(int id, String driver, String vehicleNo, int phoneNo, String rdate, String rtime, String start_loc,
+		String end_loc, int vacancy, int base_fare) {
 
-	public Ride(String rideDate, String rideTime, String rideStartLocation,String rideEndLocation,int vacancy,int baseFare) {
-		this.rideDate = rideDate;
-		this.rideTime = rideTime;
-		this.rideStartLocation=rideStartLocation;
-		this.rideEndLocation=rideEndLocation;
-		this.baseFare=baseFare;
-		this.vacancy = vacancy;
-	}
-	
-	// define getter/setter
-	
+	this.id = id;
+	this.driver = driver;
+	this.vehicleNo = vehicleNo;
+	this.phoneNo = phoneNo;
+	this.rdate = rdate;
+	this.rtime = rtime;
+	this.start_loc = start_loc;
+	this.end_loc = end_loc;
+	this.vacancy = vacancy;
+	this.base_fare = base_fare;
+    }
+
+	// define getter/setter  
+
 	public int getId() {
-			return id;
-		}
+		return id;
+	}
 
 	public void setId(int id) {
-			this.id = id;
-		}
-	public String getRideDate() {
-		return rideDate;
+		this.id = id;
 	}
-	public int getBaseFare() {
-		return baseFare;
+
+	public String getDriver() {
+		return driver;
 	}
-	public void setBaseFare(int BaseFare) {
-		this.baseFare = baseFare;
+
+	public void setDriver(String driver) {
+		this.driver = driver;
 	}
-	public void setRideDate(String rideDate) {
-		this.rideDate = rideDate;
+
+	public String getVehicleNo() {
+		return vehicleNo;
 	}
-	public String getRideTime() {
-		return rideTime;
+
+	public void setVehicleNo(String vehicleNo) {
+		this.vehicleNo = vehicleNo;
 	}
-	public void setRideTime(String rideTime) {
-		this.rideTime = rideTime;
+
+	public int getPhoneNo() {
+		return phoneNo;
 	}
-	public String getRideStartLocation() {
-		return rideStartLocation;
+
+	public void setPhoneNo(int phoneNo) {
+		this.phoneNo = phoneNo;
 	}
-	public void setRideStartLocation(String rideStartLocation) {
-		this.rideStartLocation = rideStartLocation;
+
+	public String getRdate() {
+		return rdate;
 	}
-	public String getRideEndLocation() {
-		return rideEndLocation;
+
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
 	}
-	public void setRideEndLocation(String rideEndLocation) {
-		this.rideEndLocation = rideEndLocation;
+
+	public String getRtime() {
+		return rtime;
 	}
+
+	public void setRtime(String rtime) {
+		this.rtime = rtime;
+	}
+
+	public String getStart_loc() {
+		return start_loc;
+	}
+
+	public void setStart_loc(String start_loc) {
+		this.start_loc = start_loc;
+	}
+
+	public String getEnd_loc() {
+		return end_loc;
+	}
+
+	public void setEnd_loc(String end_loc) {
+		this.end_loc = end_loc;
+	}
+
 	public int getVacancy() {
 		return vacancy;
 	}
+
 	public void setVacancy(int vacancy) {
 		this.vacancy = vacancy;
+	}
+
+	public int getBase_fare() {
+		return base_fare;
+	}
+
+	public void setBase_fare(int base_fare) {
+		this.base_fare = base_fare;
 	}
 	// define tostring
 
 	@Override
 	public String toString() {
-		return "Ride [id=" + id + ", rideDate=" + rideDate + ", rideTime=" + rideTime + ", rideStartLocation="
-				+ rideStartLocation + ", rideEndLocation=" + rideEndLocation + ", vacancy=" + vacancy + ", baseFare="
-				+ baseFare + "]";
+		return "Ride [id=" + id + ", driver=" + driver + ", vehicleNo=" + vehicleNo + ", phoneNo=" + phoneNo
+				+ ", rdate=" + rdate + ", rtime=" + rtime + ", start_loc=" + start_loc + ", end_loc=" + end_loc
+				+ ", vacancy=" + vacancy + ", base_fare=" + base_fare + "]";
 	}
 
+		
 	
-	
-	
-}
+	}
