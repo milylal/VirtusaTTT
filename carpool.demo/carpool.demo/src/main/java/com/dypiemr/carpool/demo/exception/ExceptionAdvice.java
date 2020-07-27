@@ -1,21 +1,27 @@
 package com.dypiemr.carpool.demo.exception;
 
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 
 @RestControllerAdvice
 public class ExceptionAdvice {
-
+	@ExceptionHandler(Exception.class)
+	  public final ResponseEntity<CustomErrorResponse> handleAllExceptions(Exception ex, WebRequest request) {
+		CustomErrorResponse exceptionResponse = new CustomErrorResponse(new Date(), ex.getMessage(),
+			        request.getDescription(false));
+	    return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+	  }
 	@ExceptionHandler(value = NotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> handleGenericNotFoundException(NotFoundException e) {
-		CustomErrorResponse error = new CustomErrorResponse("NOT_FOUND_ERROR", e.getMessage());
-		error.setTimestamp(LocalDateTime.now());
-		error.setStatus((HttpStatus.NOT_FOUND.value()));
-		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	public ResponseEntity<CustomErrorResponse> handleGenericNotFoundException(NotFoundException e,WebRequest request) {
+		CustomErrorResponse exceptionResponse = new CustomErrorResponse(new Date(), e.getMessage(),
+		        request.getDescription(false));
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
 	}	
 
 }

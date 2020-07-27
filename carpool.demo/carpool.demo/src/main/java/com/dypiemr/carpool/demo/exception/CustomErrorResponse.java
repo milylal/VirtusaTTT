@@ -1,54 +1,34 @@
 package com.dypiemr.carpool.demo.exception;
 
 	import java.time.LocalDateTime;
+import java.util.Date;
 
-	import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 	public class CustomErrorResponse {
 
-		String errorCode;
-		String errorMsg;
-		int status;
-		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-		LocalDateTime timestamp;
-		
-		public CustomErrorResponse(String errorCode, String errorMsg) {
-			super();
-			this.errorCode = errorCode;
-			this.errorMsg = errorMsg;
-		}
+		  private Date timestamp;
+		  private String message;
+		  private String details;
 
-		public String getErrorCode() {
-			return errorCode;
-		}
+		  public CustomErrorResponse(Date timestamp, String message, String details) {
+		    super();
+		    this.timestamp = timestamp;
+		    this.message = message;
+		    this.details = details;
+		  }
 
-		public void setErrorCode(String errorCode) {
-			this.errorCode = errorCode;
-		}
+		  public Date getTimestamp() {
+		    return timestamp;
+		  }
 
-		public String getErrorMsg() {
-			return errorMsg;
-		}
+		  public String getMessage() {
+		    return message;
+		  }
 
-		public void setErrorMsg(String errorMsg) {
-			this.errorMsg = errorMsg;
-		}
-
-		public int getStatus() {
-			return status;
-		}
-
-		public void setStatus(int status) {
-			this.status = status;
-		}
-
-		public LocalDateTime getTimestamp() {
-			return timestamp;
-		}
-
-		public void setTimestamp(LocalDateTime timestamp) {
-			this.timestamp = timestamp;
-		}
+		  public String getDetails() {
+		    return details;
+		  }
 		
 		
 		
