@@ -3,6 +3,8 @@ package com.dypiemr.carpool.demo.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dypiemr.carpool.demo.entity.Customer;
 import com.dypiemr.carpool.demo.entity.Ride;
 import com.dypiemr.carpool.demo.exception.NotFoundException;
 import com.dypiemr.carpool.demo.service.RideService;
@@ -64,11 +67,14 @@ public class RideRESTController {
 		// add mapping for PUT /ride - update existing ride
 		
 		@PutMapping("/ride")
-		public Ride updateRide(@RequestBody Ride theRide) {
-			
+		public ResponseEntity<Ride> updateRide(@RequestBody Ride theRide) {
+			try {
 			rideService.save(theRide);
-			
-			return theRide;
+			}
+			catch(Exception e) {
+				return new ResponseEntity<Ride>(theRide,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			return new ResponseEntity<Ride>(theRide,HttpStatus.OK);
 		}
 		// add mapping for DELETE /ride/{rideId} - delete ride
 		
@@ -122,6 +128,5 @@ public class RideRESTController {
 			
 	
 }
-
 
 

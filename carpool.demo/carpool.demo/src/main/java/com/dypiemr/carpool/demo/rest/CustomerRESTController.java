@@ -2,6 +2,8 @@ package com.dypiemr.carpool.demo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,11 +67,14 @@ public class CustomerRESTController {
 		// add mapping for PUT /customer - update existing customer
 		
 		@PutMapping("/customer")
-		public Customer updateCustomer(@RequestBody Customer theCustomer) {
-			
+		public ResponseEntity<Customer> updateCustomer(@RequestBody Customer theCustomer) {
+			try {
 			customerService.save(theCustomer);
-			
-			return theCustomer;
+			}
+			catch(Exception e) {
+				return new ResponseEntity<Customer>(theCustomer,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			return new ResponseEntity<Customer>(theCustomer,HttpStatus.OK);
 		}
 		// add mapping for DELETE /customer/{customerId} - delete customer
 		
